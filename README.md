@@ -1,24 +1,15 @@
-# README
+# Front-End Routes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* signup
 
-Things you may want to cover:
+* login
 
-* Ruby version
+* booking
 
-* System dependencies
+* reviews
 
-* Configuration
+* services
 
-* Database creation
+* admin
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* error page * anything

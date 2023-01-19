@@ -4,9 +4,13 @@ class CommentsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
         
     def index
-        render json: Comment.all, status: :ok
+        render json: Comment.all
     end
 
+    def show
+        comment = find_comment
+        render json: comment
+    end
     def create
         comment = Comment.create(comment_params)
         render json: comment, status: :created
@@ -18,6 +22,9 @@ class CommentsController < ApplicationController
         params.permit(:fullname, :email, :comment)
     end
 
+    def find_comment
+        comment.find(params[:id])
+    end
 
     def render_not_found_response
         render json: { error: "Comment Not found" }, status: :unprocessable_entity

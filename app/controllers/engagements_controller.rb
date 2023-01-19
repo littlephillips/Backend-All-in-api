@@ -2,7 +2,7 @@ class EngagementsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  skip_before_action :authorized, only: [ :create]
+  skip_before_action :authorized, only: [:index, :create, :destroy]
 
   def index
     render json: Engagement.all
@@ -11,6 +11,12 @@ class EngagementsController < ApplicationController
   def create
     engagement = Engagement.create(engagement_params)
     render json: engagement, status: :created
+  end
+
+  def destroy
+    engagement = Engagement.find(params[:id])
+    engagement.destroy
+    head :no_content
   end
 
   private

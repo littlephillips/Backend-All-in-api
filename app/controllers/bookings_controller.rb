@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  skip_before_action :authorized, only: [:index, :create]
+  skip_before_action :authorized, only: [:index, :create, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
@@ -12,6 +12,12 @@ class BookingsController < ApplicationController
   def create
     booking = Booking.create!(booking_params)
     render json: booking, status: :created
+  end
+
+  def destroy
+    booking  = Booking.find(params[:id])
+    booking.destroy
+    head :no_content
   end
 
   private

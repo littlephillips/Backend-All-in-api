@@ -1,9 +1,11 @@
 class CreateReviews < ActiveRecord::Migration[7.0]
   def change
     create_table :reviews do |t|
-      t.integer :booking_id
+      t.string :fullname
+      t.string :email
+      t.string :review
       t.integer :event_id
-      t.string :comment
+      t.integer :booking_id
 
       t.timestamps
     end
