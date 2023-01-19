@@ -25,16 +25,18 @@ Booking.create(fullname: "Jordan Poole", phonenumber: "0987654322", email: "pool
 Booking.create(fullname: "Luka Doncic", phonenumber: "0987654322", email: "doncic@gmail.com", eventname: "graduation", eventdate: "2023-01-19" )
 
 #Comment
-Comment.create(fullname: "Luke Kennard", email: "luke@gmail.com", comment: "I love your services")
-Comment.create(fullname: "Ja Morant",    email: "morant@gmail.com",  comment: "Perfecto!")
-Comment.create(fullname: "Simon Jordan", email: "jordan@gmail.com", comment: "Gracias for the wonderful event!")
-Comment.create(fullname: "Steph Curry",  email: "curry@gmail.com", comment: "Very professional....")
-Comment.create(fullname: "Luka Doncic",  email: "doncic@gmail.com",comment: "I think you can improve on the food spices level")
+# Comment.create(fullname: "Luke Kennard", email: "luke@gmail.com", review: "I love your services")
+# Comment.create(fullname: "Ja Morant",    email: "morant@gmail.com",  review: "Perfecto!")
+# Comment.create(fullname: "Simon Jordan", email: "jordan@gmail.com", review: "Gracias for the wonderful event!")
+# Comment.create(fullname: "Steph Curry",  email: "curry@gmail.com", review: "Very professional....")
+# Comment.create(fullname: "Luka Doncic",  email: "doncic@gmail.com",review: "I think you can improve on the food spices level")
 
 Engagement.create(fullname: "Andrew Tate", email: "tate@gmail.com", comment: "I would like to know if you offer multiple day events management")
 Engagement.create(fullname: "Jordan Peterson", email: "peterson@gmail.com", comment: "holding an event in Africa, would like to meet")
 Engagement.create(fullname: "Ben Shapir o", email: "shapiro@gmail.com", comment: " do you hold private event managements")
 
+# Review
+Review.create(fullname: "Luke Kennard", email: "luke@gmail.com", comment: "I love your services.", eventname:"Wedding")
 
 
 
