@@ -1,26 +1,56 @@
-    class ReviewsController < ApplicationController
+class ReviewsController < ApplicationController
+skip_before_action :authorized, only: [:index, :show, :edit, :destroy, :create, :update]
 
-    skip_before_action :authorized, only: [:index. :create]
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  # GET /reviews
+  def index
+    @reviews = Review.all
 
+    render json: @reviews
+  end
 
-    def index
-    render json: Review.all
+  # GET /reviews/1
+  def show
+    render json: @review
+  end
+
+  # POST /reviews
+  def create
+    @review = Review.new(review_params)
+
+    if @review.save
+      render json: @review, status: :created, location: @review
+    else
+      render json: @review.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /reviews/1
+  def update
+    if @review.update(review_params_id)
+      render json: @review
+    else
+      render json: @review.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /reviews/1
+  # def destroy
+  #   @review.destroy
+  # end
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    head :no_content
+end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_review
+      @review = Review.find(params[:id])
     end
 
-    def create
-    review = Review.create(review_params)
-    render json: review, status: :created
-    end
-
-    private
-
+    # Only allow a list of trusted parameters through.
     def review_params
-    params.permit(:booking_id, :event_id, :comment)
+      params.require(:review).permit(:fullname, :email, :comment, :eventname)
     end
-
-
-    def render_not_found_response
-    render json: { error: "Review Not found" }, status: :unprocessable_entity
-    end
-    end
+end
