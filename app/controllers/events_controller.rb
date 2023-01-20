@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-    skip_before_action :authorized, only: [:show, :index, :create]
+    skip_before_action :authorized, only: [:index, :create]
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
@@ -9,7 +9,7 @@ class EventsController < ApplicationController
     end
 
     def create
-        event = Event.create!(event_params)
+        event = Event.create(event_params)
         render json: event, status: :created
     end
 
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
     private
     def event_params
-        params.permit(:eventname, :description, :services, :image_url, :admin_id)
+        params.permit(:eventname, :description, :services,  :image_url)
     end
 
     def render_not_found_response

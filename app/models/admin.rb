@@ -9,7 +9,7 @@ class Admin < ApplicationRecord
 
     def must_have_allin_admin
         unless username.match?(/allinadmin/)
-            errors.add(:username, ":Only Authorized person can log in!")
+            errors.add(:username, " MUST include allinadmin")
         end
     end
 

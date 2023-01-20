@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-    skip_before_action :authorized, only: [:index, :create]
+    skip_before_action :authorized, only: [:show, :index, :create]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
         
     def index
@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:fullname, :email, :comment, :booking_id, :event_id)
+        params.permit(:fullname, :email, :review)
     end
 
 
